@@ -10,6 +10,11 @@ $comment = htmlspecialchars($comment, ENT_QUOTES, 'UTF-8');
 $query = "INSERT INTO guestbook (name, comment) VALUES (?,?)";
 $stmt = $mysqli->prepare($query);
 
+$fileContent = "Name: $name\nComment: $comment\n"
+$fileName = 'output.txt';
+
+file_put_contents($fileName, $fileContent, FILE_APPEND);
+
 // Bind parameters
 $stmt->bind_param('ss', $name, $comment);
 
